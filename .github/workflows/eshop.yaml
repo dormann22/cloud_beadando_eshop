@@ -44,8 +44,8 @@ jobs:
 
     - name: Update Image Tag
       run: |
-        sed -i "s|image: .*|image: ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}|g" deployment.yaml
+        sed -i "s|image: .*|image: ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}|g" app.yaml
 
     - name: Deploy to AKS
       run: |
-        kubectl apply -f deployment.yaml
+        kubectl apply -f app.yaml
