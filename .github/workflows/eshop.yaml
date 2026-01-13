@@ -14,38 +14,38 @@ jobs:
     runs-on: ubuntu-latest
 
   steps:
-    - uses: actions/checkout@v3
+  - uses: actions/checkout@v3
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: '8.0.x'
+  - name: Setup .NET
+    uses: actions/setup-dotnet@v3
+    with:
+      dotnet-version: '8.0.x'
 
-    - name: Run Unit Tests
-      run: dotnet test tests/UnitTests/UnitTests.csproj --verbosity normal
+  - name: Run Unit Tests
+    run: dotnet test tests/UnitTests/UnitTests.csproj --verbosity normal
 
-    - name: Log in to ACR
-      uses: docker/login-action@v2
-      with:
-        registry: ${{ env.ACR_NAME }}.azurecr.io
-        username: ${{ secrets.ACR_USERNAME }}
-        password: ${{ secrets.ACR_PASSWORD }}
+  - name: Log in to ACR
+    uses: docker/login-action@v2
+    with:
+      registry: ${{ env.ACR_NAME }}.azurecr.io
+      username: ${{ secrets.ACR_USERNAME }}
+      password: ${{ secrets.ACR_PASSWORD }}
 
-    - name: Build and Push Image
-      run: |
-        docker build -t ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }} .
-        docker push ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}
+  - name: Build and Push Image
+    run: |
+      docker build -t ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }} .
+      docker push ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}
 
-    - name: Set AKS Context
-      uses: azure/k8s-set-context@v3
-      with:
-        method: kubeconfig
-        kubeconfig: ${{ secrets.KUBE_CONFIG }}
+  - name: Set AKS Context
+    uses: azure/k8s-set-context@v3
+    with:
+      method: kubeconfig
+      kubeconfig: ${{ secrets.KUBE_CONFIG }}
 
-    - name: Update Image Tag
-      run: |
-        sed -i "s|image: .*|image: ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}|g" deployment.yaml
+  - name: Update Image Tag
+    run: |
+      sed -i "s|image: .*|image: ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}|g" deployment.yaml
 
-    - name: Deploy to AKS
-      run: |
-        kubectl apply -f deployment.yaml
+  - name: Deploy to AKS
+    run: |
+      kubectl apply -f deployment.yaml
