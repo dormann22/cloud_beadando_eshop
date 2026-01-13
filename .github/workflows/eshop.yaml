@@ -1,0 +1,52 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+env:
+  ACR_NAME: eshopregistry26959b11    # Your Registry Name
+  IMAGE_NAME: eshop-web              # Your Image Name
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Get the code
+    - uses: actions/checkout@v3
+
+    # 2. Log in to the Docker Registry (The Garage)
+    # We use the Admin Keys you already have (ACR_USERNAME/PASSWORD)
+    - name: Log in to ACR
+      uses: docker/login-action@v2
+      with:
+        registry: ${{ env.ACR_NAME }}.azurecr.io
+        username: ${{ secrets.ACR_USERNAME }}
+        password: ${{ secrets.ACR_PASSWORD }}
+
+    # 3. Build and Push the Docker Image
+    - name: Build and Push Image
+      run: |
+        docker build -t ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }} .
+        docker push ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}
+
+    # 4. Connect to Kubernetes using the Master Key (Bypass Mode)
+    # We skip "Azure Login" and go straight to the cluster using the secret file.
+    - name: Set AKS Context
+      uses: azure/k8s-set-context@v3
+      with:
+        method: kubeconfig
+        kubeconfig: ${{ secrets.KUBE_CONFIG }}
+
+    # 5. Update Deployment File
+    # Replaces the image line with the new tag we just built
+    - name: Update Image Tag
+      run: |
+        sed -i "s|image: .*|image: ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}|g" deployment.yaml
+
+    # 6. Apply to Kubernetes
+    - name: Deploy to AKS
+      run: |
+        kubectl apply -f deployment.yaml
