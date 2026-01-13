@@ -44,9 +44,9 @@ jobs:
     # Replaces the image line with the new tag we just built
     - name: Update Image Tag
       run: |
-        sed -i "s|image: .*|image: ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}|g" deployment.yaml
+        sed -i "s|image: .*|image: ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}|g" app.yaml
 
     # 6. Apply to Kubernetes
     - name: Deploy to AKS
       run: |
-        kubectl apply -f deployment.yaml
+        kubectl apply -f app.yaml
