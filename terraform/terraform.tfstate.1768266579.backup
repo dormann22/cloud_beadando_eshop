@@ -1,0 +1,360 @@
+{
+  "version": 4,
+  "terraform_version": "1.14.3",
+  "serial": 36,
+  "lineage": "16308ec7-c689-9760-6df9-5aa164e837f7",
+  "outputs": {
+    "acr_login_server": {
+      "value": "eshopregistry26959b11.azurecr.io",
+      "type": "string"
+    },
+    "aks_cluster_name": {
+      "value": "eshop-aks-cluster",
+      "type": "string"
+    },
+    "resource_group_name": {
+      "value": "eshop-resources",
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "mode": "managed",
+      "type": "azurerm_container_registry",
+      "name": "acr",
+      "provider": "provider[\"registry.terraform.io/hashicorp/azurerm\"]",
+      "instances": [
+        {
+          "status": "tainted",
+          "schema_version": 2,
+          "attributes": {
+            "admin_enabled": true,
+            "admin_password": null,
+            "admin_username": null,
+            "anonymous_pull_enabled": false,
+            "data_endpoint_enabled": false,
+            "encryption": [
+              {
+                "enabled": false,
+                "identity_client_id": "",
+                "key_vault_key_id": ""
+              }
+            ],
+            "export_policy_enabled": true,
+            "georeplications": [],
+            "id": "/subscriptions/b3e68cc8-a981-4d18-9f1c-8d3002360d63/resourceGroups/eshop-resources/providers/Microsoft.ContainerRegistry/registries/eshopregistry26959b11",
+            "identity": [],
+            "location": "swedencentral",
+            "login_server": "eshopregistry26959b11.azurecr.io",
+            "name": "eshopregistry26959b11",
+            "network_rule_bypass_option": "AzureServices",
+            "network_rule_set": [],
+            "public_network_access_enabled": true,
+            "quarantine_policy_enabled": false,
+            "resource_group_name": "eshop-resources",
+            "retention_policy": [
+              {
+                "days": 7,
+                "enabled": false
+              }
+            ],
+            "sku": "Basic",
+            "tags": null,
+            "timeouts": null,
+            "trust_policy": [
+              {
+                "enabled": false
+              }
+            ],
+            "zone_redundancy_enabled": false
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "admin_password"
+              }
+            ]
+          ],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxODAwMDAwMDAwMDAwLCJkZWxldGUiOjE4MDAwMDAwMDAwMDAsInJlYWQiOjMwMDAwMDAwMDAwMCwidXBkYXRlIjoxODAwMDAwMDAwMDAwfSwic2NoZW1hX3ZlcnNpb24iOiIyIn0=",
+          "dependencies": [
+            "azurerm_resource_group.rg",
+            "random_id.acr_name"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "azurerm_kubernetes_cluster",
+      "name": "aks",
+      "provider": "provider[\"registry.terraform.io/hashicorp/azurerm\"]",
+      "instances": [
+        {
+          "schema_version": 2,
+          "attributes": {
+            "aci_connector_linux": [],
+            "api_server_access_profile": [],
+            "api_server_authorized_ip_ranges": [],
+            "auto_scaler_profile": [],
+            "automatic_channel_upgrade": "",
+            "azure_active_directory_role_based_access_control": [],
+            "azure_policy_enabled": null,
+            "confidential_computing": [],
+            "cost_analysis_enabled": false,
+            "current_kubernetes_version": "1.33.5",
+            "custom_ca_trust_certificates_base64": null,
+            "default_node_pool": [
+              {
+                "capacity_reservation_group_id": "",
+                "custom_ca_trust_enabled": false,
+                "enable_auto_scaling": false,
+                "enable_host_encryption": false,
+                "enable_node_public_ip": false,
+                "fips_enabled": false,
+                "gpu_instance": "",
+                "host_group_id": "",
+                "kubelet_config": [],
+                "kubelet_disk_type": "OS",
+                "linux_os_config": [],
+                "max_count": 0,
+                "max_pods": 250,
+                "message_of_the_day": "",
+                "min_count": 0,
+                "name": "default",
+                "node_count": 1,
+                "node_labels": {},
+                "node_network_profile": [],
+                "node_public_ip_prefix_id": "",
+                "node_taints": null,
+                "only_critical_addons_enabled": false,
+                "orchestrator_version": "1.33",
+                "os_disk_size_gb": 128,
+                "os_disk_type": "Managed",
+                "os_sku": "Ubuntu",
+                "pod_subnet_id": "",
+                "proximity_placement_group_id": "",
+                "scale_down_mode": "Delete",
+                "snapshot_id": "",
+                "tags": null,
+                "temporary_name_for_rotation": "",
+                "type": "VirtualMachineScaleSets",
+                "ultra_ssd_enabled": false,
+                "upgrade_settings": [
+                  {
+                    "drain_timeout_in_minutes": 0,
+                    "max_surge": "10%",
+                    "node_soak_duration_in_minutes": 0
+                  }
+                ],
+                "vm_size": "Standard_B2s",
+                "vnet_subnet_id": "",
+                "workload_runtime": "",
+                "zones": null
+              }
+            ],
+            "disk_encryption_set_id": "",
+            "dns_prefix": "eshopaks",
+            "dns_prefix_private_cluster": "",
+            "edge_zone": "",
+            "enable_pod_security_policy": false,
+            "fqdn": "eshopaks-zq28g5kd.hcp.swedencentral.azmk8s.io",
+            "http_application_routing_enabled": null,
+            "http_application_routing_zone_name": null,
+            "http_proxy_config": [],
+            "id": "/subscriptions/b3e68cc8-a981-4d18-9f1c-8d3002360d63/resourceGroups/eshop-resources/providers/Microsoft.ContainerService/managedClusters/eshop-aks-cluster",
+            "identity": [
+              {
+                "identity_ids": null,
+                "principal_id": "a07303c9-a70e-4df8-97c1-3577765ded13",
+                "tenant_id": "0133bb48-f790-4560-a64d-ac46a472fbbc",
+                "type": "SystemAssigned"
+              }
+            ],
+            "image_cleaner_enabled": false,
+            "image_cleaner_interval_hours": 48,
+            "ingress_application_gateway": [],
+            "key_management_service": [],
+            "key_vault_secrets_provider": [],
+            "kube_admin_config": [],
+            "kube_admin_config_raw": "",
+            "kube_config": [
+              {
+                "client_certificate": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUZIakNDQXdhZ0F3SUJBZ0lSQUtYc2pWL3NrNlF4RFlnUUIwcUVoclF3RFFZSktvWklodmNOQVFFTEJRQXcKRFRFTE1Ba0dBMVVFQXhNQ1kyRXdIaGNOTWpZd01URXpNREExTkRVMFdoY05Namd3TVRFek1ERXdORFUwV2pBdwpNUmN3RlFZRFZRUUtFdzV6ZVhOMFpXMDZiV0Z6ZEdWeWN6RVZNQk1HQTFVRUF4TU1iV0Z6ZEdWeVkyeHBaVzUwCk1JSUNJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBZzhBTUlJQ0NnS0NBZ0VBb3dhZkIxRGZTSDVsNFNwcm5TSGYKbjFYV2l1MXJBbU0yYTNRenQ3MENLS0Q1NkowZTR2cGRJeDd0YkwwcEh2dWN5WGFZNCtyblkvejZjZWViNVN1SQpmTTNjSjRSWGFrc2JTYm9CSXh4MlljVU5NNzRSVStNSkRPYlg4N1gvZHFnVjNlUW45S050Zkhuc2kyUmY3UXN6CjJzVFVwY0VRUk5SVHM4RFZEMXVEaStab3VSSnpnTTVqdG45dFM4SXBkNVZzQW5VNE1WNTVsYlJDaGc3STRleVUKOTk1dkEyRXZCVWhXL2VZN2JJWks4QjA0L0dtY2h1ZjMvMTlGbFBPeFB0Sk1WZjdxL1d4OTcyRGd5elVFMDlaZAowVWJKKzBKMkxwaHZjZE8wNWgvS2ZRekkxa3l3V3RmS2Mvb1I2d3pDV0dVc3FiR0F0dlJPb2NUMkw4RnZWZVlDCmdlNnhwSmNmMFhzb2FVQ3kzTExMdXg3TUtkMkhGOXRmcHRJV0x4VGRTUVh2cVpEZXdGWjRqTVJqQ2ZNOE5rL1gKY3BQb053eHVPREZUeVZJMktRZDBwUWpDQk94aTYyNTJMRThKOSttOFc4R0htMkhGNTdrOG83Qm5YS0NybHlvegpua0xoNzhYV0RUeDl1OW90ZkRxMFFWQmZKbmN6KzdiRFdBK0x6d3VUTlNSS1pZZW5jMW1BbTFTUUZ3TVVCYTY4CkNkQnVxVXU5dHdRY2lZUC9NanZ2ZEdNZnIrdk1nKzU5SDc1VTBjakJJVEI4UVl6WXBaOFZnUy9pR3hHK2NVY2MKYjlGV29oWW80cEppWjV3ZjhyU0NrYlNrTXVqeUJ3cW40a3V1SU5aemlMNVlWa1N0Sy9idE5tSWNmZEJhdUFhOApqVkJFa2h0eENiYWsrVUV4UFpZaFVSVUNBd0VBQWFOV01GUXdEZ1lEVlIwUEFRSC9CQVFEQWdXZ01CTUdBMVVkCkpRUU1NQW9HQ0NzR0FRVUZCd01DTUF3R0ExVWRFd0VCL3dRQ01BQXdId1lEVlIwakJCZ3dGb0FVRVJzWnQ1Z1UKOUplM0drZWpEa2t2c2RqM0tBMHdEUVlKS29aSWh2Y05BUUVMQlFBRGdnSUJBRDRVbU5XckF2ZlFRQ0ROVTk3UQpJQWxEenpNS29udDQ0bWlMODhsM0MwN0dKeGVSZTR3UEQySGc1dFBEQUdEbWl0R3dNdHJWdGZBQjhMUTZsRjkvCjVjN01IYVVBZnRvS1ZiODNQempkSksyZ0hoTENGRlJtUXJsZkp1VG9LckFNcEFqMzhyTDNIOGVxU0NpQUpVcXEKNFc4Y1drdFhtWmE0dm5wWm5JbEVlSDJmZWFpdlZwSTk5TER3QlVSWkZoM0RpQnk2cVViWmZJQjNYbDhBN0xzZgplSERxV2x3QXNzd3p5bTVlakNWSlgzd203U1l6aDYvbkluSWFTV1loeHVRajZPWmF1YkVBa21Bc1FqV2lLbkJzCmVVMlJCOHZzTTB1NjQ5THJ1U0pON1pPNWlRYUNXRG9vQ3o5bS9wTlUzbnJYR3lUT3FTNVE4dXdKNzJJeW9pSmIKb0JXMEhTN0JXRjVHWElBeDNGQmxMelIzS29zQ3FVNmhrd0tua09iaFlMdllSRzR4RVRGTjUzSnlSMXY4RnNlNgpYUTIxY09ZdnA5ZHJWRzl6VjRNVUhaMDJoRkhJcUM4VVR4ZHRkVk1sMExUZzFxWitnc2VXK0hqUVhsN21iK0hTCmlaektFOXpNeWVIYmhkWjMvM29KWmxMbm1qNlVvUkszczg0TGR1YSt6TnFrcmE1bi9CaDFYQncyRDFmNUlRWmwKcWE5MjBPakVycC9qTVJVN3NsQ3c0SEVUdFNnSnUrdVk5Y0poaTgyWHkzR3dqYTZ2b1ZHbWYxNEc1ano1WDkvMwpSSXVRZk5ZQ1dsZEVzbmtCUzM3U1pqR01lRVFIRDIyQXpMMW1ZUHF0cW5ZNkJSVjY4MUNLR08wRDk4OWZXSVZpCmtrMXFKb1lYTzhNUHptRUFLQmRwc1hEeAotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==",
+                "client_key": "LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlKSndJQkFBS0NBZ0VBb3dhZkIxRGZTSDVsNFNwcm5TSGZuMVhXaXUxckFtTTJhM1F6dDcwQ0tLRDU2SjBlCjR2cGRJeDd0YkwwcEh2dWN5WGFZNCtyblkvejZjZWViNVN1SWZNM2NKNFJYYWtzYlNib0JJeHgyWWNVTk03NFIKVStNSkRPYlg4N1gvZHFnVjNlUW45S050Zkhuc2kyUmY3UXN6MnNUVXBjRVFSTlJUczhEVkQxdURpK1pvdVJKegpnTTVqdG45dFM4SXBkNVZzQW5VNE1WNTVsYlJDaGc3STRleVU5OTV2QTJFdkJVaFcvZVk3YklaSzhCMDQvR21jCmh1ZjMvMTlGbFBPeFB0Sk1WZjdxL1d4OTcyRGd5elVFMDlaZDBVYkorMEoyTHBodmNkTzA1aC9LZlF6STFreXcKV3RmS2Mvb1I2d3pDV0dVc3FiR0F0dlJPb2NUMkw4RnZWZVlDZ2U2eHBKY2YwWHNvYVVDeTNMTEx1eDdNS2QySApGOXRmcHRJV0x4VGRTUVh2cVpEZXdGWjRqTVJqQ2ZNOE5rL1hjcFBvTnd4dU9ERlR5VkkyS1FkMHBRakNCT3hpCjYyNTJMRThKOSttOFc4R0htMkhGNTdrOG83Qm5YS0NybHlvem5rTGg3OFhXRFR4OXU5b3RmRHEwUVZCZkpuY3oKKzdiRFdBK0x6d3VUTlNSS1pZZW5jMW1BbTFTUUZ3TVVCYTY4Q2RCdXFVdTl0d1FjaVlQL01qdnZkR01mcit2TQpnKzU5SDc1VTBjakJJVEI4UVl6WXBaOFZnUy9pR3hHK2NVY2NiOUZXb2hZbzRwSmlaNXdmOHJTQ2tiU2tNdWp5CkJ3cW40a3V1SU5aemlMNVlWa1N0Sy9idE5tSWNmZEJhdUFhOGpWQkVraHR4Q2JhaytVRXhQWlloVVJVQ0F3RUEKQVFLQ0FnQWRkSGZOT1padUliQkVvNFo0Q0lPLzVTRnpUbncwSFRyYTVVN20xcmFLSXJPa2pLYmsrYmxVUENWSApyVkc5c0ZaZXJCZnByaXFLalUydXdOc1E1L0dzSXdHdy9oOVJMQ3JOQWxkc1FacytCUDFpcU9lMmtXRzBQQTB1CmttYUt5TW5Tb29ONWx3R1VLTzlOTENDTTBxWlcwNU5jTTJxK0ZPTGVxbXVVYjhOdnhueUxXOE1VdGJXY1pwK1gKdllnQ2ZEUGNxZE15VUZDRmRPRkVHVzNBTEIrcVBUMHZqaUtSd01VKzhKY3gvMzJRcnFiNkxCYkU1U3FRc0dVQgpDWnF2c0Exc3lEY3EvS3d3VVArc2wzSzgxNUZ4MjJscEJWUVhEU0d0bmtPa0JJQndZWnZ6NUQxRTNKSk9yQk1LCnRlNXpUQ3hxcUpDSi9kQXJPRXdHeXR0VDJOQUE0ZzBuREE4bElaTzU3NEc4TndaUUh3bWNzRkcvM0hrVGR3OEkKeHY4OFNBYUJrR3lKaWlYclVwa05WRmlCTHMvek5KV0hrTDhEVmxneTdGUDlMU1N3RHlEbG5SMmMrMEtsYVZpOAp2dThXSVd0eEZRUTZZYmVzQWtzZjlCNmFrWnh2QzBYRkdJTTFHU0FUT0lTVTBnSVJ1UDRpcXhhcXpVekRKSkplCnQxc2tDWkVlM1F3TVlWM3ZJOHQzbnN2QU5SMDc2ZUZFL2FiOHNwYkgrcmpleXcxWGhXZ2tkR1liK3lYTWdQeE4KR0JpZkxiaG8yUitxQ1hEdG1lUisrNWJHRXpBNFVBejFHTHJhREJmWG9wVEVMOEV0Tm9EcFFualVFaXlzSkdNQQpBMVBYV1lTWUdKSE5BbTdpWnVWbkVGcUk2K3Q2alFQSmYrRjdxSkdUSXRCRlRGNHBqUUtDQVFFQXpteXJ6VU5rCnhxeUF6RUVhTXl2MmNSalNQMUpEQzd4bGxCTWxBOUNOVW1la0I1endpeEtQUzRpNmp6WHdXcnU2L29VUFVjRU4KQW1NcHlQck1nU3dPRXhLeW85L216ZXh6bUxQY053OEtBS2ZaQWFUTmlSYW1QZm9JSi9zK3dwTjgyNEdhQysycwpORXY4UzhKUk9Vb0JYSGtwTzI3M1hYU3FNdGpTLy9IdkNFc1MzSGNJbU1Gd1BFWmpwNGo0Z1ZXa0NWN2YvaEZvCjNJY2tqcXJCQTFxUFVONjU3aUVhYTM3d09EWGhySXBPOFRLbG52Rk1KZE0vUjdEdyt0WVY0MU9qMmtXS2I5MU4KYmoyZkNiQ0RpU045SDh4RGl5Y1dYaXk0RHZMQzlCbGZDeUEySHZPOXBkbFU5K0JuNXRLRWp5T2xycENSYTh1VAprZSttRnBIRVZnOFhKd0tDQVFFQXlpMjZlY2J6dWdXU1lhUnJ3OTNLMVNRTld3Q29xSjJHNWZjYjFsK1RBZGZECnFZTDVlL3FkdFBLY3dtWUVFempHRkRGeXMyREl2WjUyVVQwTytMTE5xV2xCMmhnMjFMeDRaTDF5NWMrOGxtYUIKTHBIdGFpYzA1d3FXUnQxaTE2NU1oU0VSUUExUVpqR0dTMVl3Z1g0N2VlRWNSbEFUNy93d3A1Y0FsMjA1L0txMwpJZHl5SjNTaVNtazhJKzNWRGlaYjhDZ3RINnFubFZDM3RVQ0U4S0RGOTBJRjlNc1Rzbm1JdTFwZWVINWE4UmorCjJaZDEvT2NLNlAxb3lQazZTbXIvemJQSE5ZY0t0Zmk2Ykd0RVE3VWJORGpSaGRTb1JOenNRSU1saVRJQUV2OEQKc1RJa3NqMURyb09sNGp1MFNpcGFSVkIvVEgrU2E4UjhtbTZHSkx2Yll3S0NBUUFLa0hFeWJoS0lRR2ZQREQzbApCSWoyUE1qMXlLWDV3Y2lKRFhuRmVqVGhWTUNHU3pmY1JqVGpMcm90ZmhzdzZZNm1XL1R1d0N5RVJNTHNzRGtyCkd6QVZOYzNDcVVETXBSODlYMmNUd2tkR3hWQkx6ejFkbUxVbFV0aDhBMVd3NjQ5bVJIbTN4cEFibFEveWFKMXoKaXlBS3RZQ3dzL3NnNDBtYWxKSW4yeC9ha3MwQ1QyMDNOQjhrVm8zZkV4bDB0UWRTRzNMbk04amtFRjZFbHFTTwpJV0pZUnkzSXpCVG9EM1VIeTJvalJHakoyMGV5bkxMQzlNNjJRbzN5cUdZeVhpTnlsa0NCZlJmclhtZjNQUHRlClYxeWQ5ZncyOE9jcUpxdTh5QnZHRms1UTZYTWJubW5FUlIwZUduUDIwaXRLa0E1NG9wbHVwTnFHaTNjNmpIYzUKMkVmZEFvSUJBQXdhK05OWnlqWVZKMUtaV2FwOG1TeHg0Q3JXdTBKOVRCcHcxVVhjcXh5dElwWC90WmhxeFE2VQppRFpMaldycE4xTDJNdnZ5aTVKdTduNm12VUsrMGZtV3g4NmJMSTFJUzUwY2lzaWZ5NWJseEU1WmhuR1lyMTQyCkVCRm1LQWpwOHNMMTIrYU41WVo0NktXU0g0MWhWWVpTcURLOWtMUUowWS8zUnAzS2VISmNkbUtjcUQ0Y2lhc1MKNmZyc3ZwaitTdnJ5TE9GOGdsUTZaUVdCTzNSODY5MkdJbjBwdTZBd0RyUEpFV2I5aWN4dHhyU1lrUVAzZ1h1NQowSkJYKzltQTFwZ21iNE1ROXQ4MmFWTWNpUlhVdmpBK1JxMVFzbEtOTjhnVkVpWkl6Q0JYREkyTGh3NzFCQnhxCjNYL1NPMVZGZStveWk2eTA1cnQxSkZESzFWVlZ1aWtDZ2dFQWYxOVZPNzRjSXhCdkNSRU1wTTRHV0Q5d0xzZmYKaHUvSzFaWWdGWUY4eDJtMVlWQ091cVdqdG10Q0VNTkF1MzdXWnRkUm84QjdjQlp2ZXRESGtIYmpMWllQNEs0agpvMTRNNWNxT2xDVHRQRnRjd01zMmhKSDFTdDA1TndMMjFXOW5LVElKWVFTMkFvbGl2Y0tpaC85ODRSekNxbldHClBJLzZjQ2I3RHo4WEF3bDY0OTN1YWdsdjluNnBRQVVEeHk2RHhVd3g1c1VMMTNOZ2s5R291T1pUSjRnL1ZVenIKK3FFdXRySXBzZlQ0RXpYdUp4MGlQblptR3JaSmJhZmVFZ3RlQllCZFMzMVduc3oydXZZR3paU1pNSUQxRVRmQgpWaFZpbWdmZXF6YUlwSm9Qd202QUo1MHF6dThHS3BScUJHQVdhSFBFVnJsV2E3Y2g5SEJQak0yYUdnPT0KLS0tLS1FTkQgUlNBIFBSSVZBVEUgS0VZLS0tLS0K",
+                "cluster_ca_certificate": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUU2VENDQXRHZ0F3SUJBZ0lSQUlhcG5HSEhSVWNJUUZYdDQ5NTMzeDR3RFFZSktvWklodmNOQVFFTEJRQXcKRFRFTE1Ba0dBMVVFQXhNQ1kyRXdJQmNOTWpZd01URXpNREExTkRVMFdoZ1BNakExTmpBeE1UTXdNVEEwTlRSYQpNQTB4Q3pBSkJnTlZCQU1UQW1OaE1JSUNJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBZzhBTUlJQ0NnS0NBZ0VBCnBDTUxraHBWdXdyQmRZNExVYlhqbDdzdnZUOHpBcWJSdXY3WlFUOWIyZFhkdkdjWFpzalBMMXRzSjk1cm9VaHEKdEd0elJVYTAzY2hxK3hRMXQxTTRuUndlclN3OFFsTnZiRklZSEYzMHhxa1IwZFFOd0JFR2puZXM2RnI1N0NiMApaeVRwc3JLN3NCQkl4azhkbGIzRUVwOGdHNTREbitSNUV0d2NVeGZzRjhHc3d0UDh6V0d3eWwrN2ZZV1RUa0phCnErbXNYcDhxQzdBMjc0MCtobzl4N3NUVGNmRlZUMVhmaVFFZEl4SEFubWVBYU5KTDZ4ZU1VUGlBbGU3WkQ5MGkKVUJPelVvSExNbjZrY3RHemdMOUwrRDA5enFZdEo4cHllR0RUVHB3ME8wbklmUFJNWHQ0RVJJL0JSU08yVy83egpianVLZEZoNHR6ZFd2WWEySnV5OC95ZG5LMktWalNqWUlHOCtSTy9sNUgxbkJER0E1aWk1Y3laSnVZdHFpT24xCkhXc0piRWxmTHZOMTJQYWthaG96WWVhaWI4YURFNzREaG1qc2E2V1NjNkxuZWU4N0FNL0tSbHA2dVdyeVJUS1UKSU1YeUMwbFZGMmtpMHplTkVGU21mTFo1ZkQ0blNmUW9ETTdUcEpoRlY2TmdMYmtqTy9mTW9Rdk5aVU9nbmJPVwpNQkNUZnBVb0VaVEIxSExrcmh4V0k4MHVIL0FwdWFwa0oxMXNaSE9jK29LbE96QmQvNUJleVk1UlAyVWFEWGZvCjVkcHRESmdERWxXZzdCZG1MaUFoWE9UVFN4S0hjcEdaVHk3YlJvay9VQlRHUThOb1dod3hPeDRIdHJrdkt6QWoKK1ZmNmNCb3hpdHBjaUdKN3BKM21uY0xvb2NKY0ZVamJwREttdC9rOVRjOENBd0VBQWFOQ01FQXdEZ1lEVlIwUApBUUgvQkFRREFnS2tNQThHQTFVZEV3RUIvd1FGTUFNQkFmOHdIUVlEVlIwT0JCWUVGQkViR2JlWUZQU1h0eHBICm93NUpMN0hZOXlnTk1BMEdDU3FHU0liM0RRRUJDd1VBQTRJQ0FRQ2ZZdFZNcHlja24xWDd2aGpDUThUcUdGTWIKTHE1bnpxTkZKNjBaRTZOOFkxSjRyMFdzbDJBTnM0WVpBaEYrVjB0T2RWOVQzc0cwalhOK3NGaVpGTlI2V05wOQpFcFZBWTlhTEJDT3U4OGpyMVRDdmhTb3BKdzJIL0srWFcxZCtNcGhsRGpGeW5BS1NiS2tzK0MzYlBSa0NBaER4Cjh0U2svc0JnNnk5bFoza3dhUjBCV1lRWlQyMHZHL0ZRRjRzRWpRdTNWQ3QzWEhyT2dKUGZ1WG9NOVgrMU10eG8KN0Y4Sk45YW50N3N6QlJGb3Y3ZElVQ3RTUUJtemlyOHdEZ25zNzBVbGhNaW5aODdRNVBsMVI5czdUMlF6VUEyMgptcnI3VWsxTlJ2bHlxT1BSM1JyaTkzZWcrMDJzOWNWTzlnUUdFQk0zbjd4Ym95VENPbEJjQ0cwbUtNQnNzMzl1CkdRTEZyZGtHODl3Ky9RdnBhdjliNk5qdk9MTFYwaTl4OGFNNG9JOUFlQ0x6QTNZMGlkWnFLSUdhZmV5TW1wNjEKRkNRdFRuTGN5YnRlRDd5V0JCVUNPT0laUGlDc3Jqb29QZ1V1VGc4VlR0eUlDVjFvT0U2WXpvVG43MGhqakF0ZgptQVZvS2JSMUlERHJldUZFWWo4RDJIZTgzZFQvUlFyMGU5eXVnWGw4VnhJcTl6cHdjaHh5aVRVSi9wcWxmajNaCnpmazZVUml5aVNIQVJiaG1pbnZmNFI4TEttTElWcXRaazJmbWcwempDSXZoMkpCUWJheUNXNUR3ckEydE16MHQKeTNrNmhXQkdRRUF0UVBDOEMweHhia2R1S3ZjMTRBajJVRHBXZG1VR3BwMmIweXo3ckVzYjVLMzZNWEx0WVBYUwpZR1QyekNSeXU2c1QxUGZJQnc9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==",
+                "host": "https://eshopaks-zq28g5kd.hcp.swedencentral.azmk8s.io:443",
+                "password": "7kcf7swaftuiet20tye4ssip7qql05hqo6dcyxq5wvmmu6jxr3iqr6pm4diivfic5x4l1xvw1uc2y2p1acshg0dzmbw923uc8tmjd7y47uhzp47uqi4e1dvl8il664lq",
+                "username": "clusterUser_eshop-resources_eshop-aks-cluster"
+              }
+            ],
+            "kube_config_raw": "apiVersion: v1\nclusters:\n- cluster:\n    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUU2VENDQXRHZ0F3SUJBZ0lSQUlhcG5HSEhSVWNJUUZYdDQ5NTMzeDR3RFFZSktvWklodmNOQVFFTEJRQXcKRFRFTE1Ba0dBMVVFQXhNQ1kyRXdJQmNOTWpZd01URXpNREExTkRVMFdoZ1BNakExTmpBeE1UTXdNVEEwTlRSYQpNQTB4Q3pBSkJnTlZCQU1UQW1OaE1JSUNJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBZzhBTUlJQ0NnS0NBZ0VBCnBDTUxraHBWdXdyQmRZNExVYlhqbDdzdnZUOHpBcWJSdXY3WlFUOWIyZFhkdkdjWFpzalBMMXRzSjk1cm9VaHEKdEd0elJVYTAzY2hxK3hRMXQxTTRuUndlclN3OFFsTnZiRklZSEYzMHhxa1IwZFFOd0JFR2puZXM2RnI1N0NiMApaeVRwc3JLN3NCQkl4azhkbGIzRUVwOGdHNTREbitSNUV0d2NVeGZzRjhHc3d0UDh6V0d3eWwrN2ZZV1RUa0phCnErbXNYcDhxQzdBMjc0MCtobzl4N3NUVGNmRlZUMVhmaVFFZEl4SEFubWVBYU5KTDZ4ZU1VUGlBbGU3WkQ5MGkKVUJPelVvSExNbjZrY3RHemdMOUwrRDA5enFZdEo4cHllR0RUVHB3ME8wbklmUFJNWHQ0RVJJL0JSU08yVy83egpianVLZEZoNHR6ZFd2WWEySnV5OC95ZG5LMktWalNqWUlHOCtSTy9sNUgxbkJER0E1aWk1Y3laSnVZdHFpT24xCkhXc0piRWxmTHZOMTJQYWthaG96WWVhaWI4YURFNzREaG1qc2E2V1NjNkxuZWU4N0FNL0tSbHA2dVdyeVJUS1UKSU1YeUMwbFZGMmtpMHplTkVGU21mTFo1ZkQ0blNmUW9ETTdUcEpoRlY2TmdMYmtqTy9mTW9Rdk5aVU9nbmJPVwpNQkNUZnBVb0VaVEIxSExrcmh4V0k4MHVIL0FwdWFwa0oxMXNaSE9jK29LbE96QmQvNUJleVk1UlAyVWFEWGZvCjVkcHRESmdERWxXZzdCZG1MaUFoWE9UVFN4S0hjcEdaVHk3YlJvay9VQlRHUThOb1dod3hPeDRIdHJrdkt6QWoKK1ZmNmNCb3hpdHBjaUdKN3BKM21uY0xvb2NKY0ZVamJwREttdC9rOVRjOENBd0VBQWFOQ01FQXdEZ1lEVlIwUApBUUgvQkFRREFnS2tNQThHQTFVZEV3RUIvd1FGTUFNQkFmOHdIUVlEVlIwT0JCWUVGQkViR2JlWUZQU1h0eHBICm93NUpMN0hZOXlnTk1BMEdDU3FHU0liM0RRRUJDd1VBQTRJQ0FRQ2ZZdFZNcHlja24xWDd2aGpDUThUcUdGTWIKTHE1bnpxTkZKNjBaRTZOOFkxSjRyMFdzbDJBTnM0WVpBaEYrVjB0T2RWOVQzc0cwalhOK3NGaVpGTlI2V05wOQpFcFZBWTlhTEJDT3U4OGpyMVRDdmhTb3BKdzJIL0srWFcxZCtNcGhsRGpGeW5BS1NiS2tzK0MzYlBSa0NBaER4Cjh0U2svc0JnNnk5bFoza3dhUjBCV1lRWlQyMHZHL0ZRRjRzRWpRdTNWQ3QzWEhyT2dKUGZ1WG9NOVgrMU10eG8KN0Y4Sk45YW50N3N6QlJGb3Y3ZElVQ3RTUUJtemlyOHdEZ25zNzBVbGhNaW5aODdRNVBsMVI5czdUMlF6VUEyMgptcnI3VWsxTlJ2bHlxT1BSM1JyaTkzZWcrMDJzOWNWTzlnUUdFQk0zbjd4Ym95VENPbEJjQ0cwbUtNQnNzMzl1CkdRTEZyZGtHODl3Ky9RdnBhdjliNk5qdk9MTFYwaTl4OGFNNG9JOUFlQ0x6QTNZMGlkWnFLSUdhZmV5TW1wNjEKRkNRdFRuTGN5YnRlRDd5V0JCVUNPT0laUGlDc3Jqb29QZ1V1VGc4VlR0eUlDVjFvT0U2WXpvVG43MGhqakF0ZgptQVZvS2JSMUlERHJldUZFWWo4RDJIZTgzZFQvUlFyMGU5eXVnWGw4VnhJcTl6cHdjaHh5aVRVSi9wcWxmajNaCnpmazZVUml5aVNIQVJiaG1pbnZmNFI4TEttTElWcXRaazJmbWcwempDSXZoMkpCUWJheUNXNUR3ckEydE16MHQKeTNrNmhXQkdRRUF0UVBDOEMweHhia2R1S3ZjMTRBajJVRHBXZG1VR3BwMmIweXo3ckVzYjVLMzZNWEx0WVBYUwpZR1QyekNSeXU2c1QxUGZJQnc9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==\n    server: https://eshopaks-zq28g5kd.hcp.swedencentral.azmk8s.io:443\n  name: eshop-aks-cluster\ncontexts:\n- context:\n    cluster: eshop-aks-cluster\n    user: clusterUser_eshop-resources_eshop-aks-cluster\n  name: eshop-aks-cluster\ncurrent-context: eshop-aks-cluster\nkind: Config\npreferences: {}\nusers:\n- name: clusterUser_eshop-resources_eshop-aks-cluster\n  user:\n    client-certificate-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUZIakNDQXdhZ0F3SUJBZ0lSQUtYc2pWL3NrNlF4RFlnUUIwcUVoclF3RFFZSktvWklodmNOQVFFTEJRQXcKRFRFTE1Ba0dBMVVFQXhNQ1kyRXdIaGNOTWpZd01URXpNREExTkRVMFdoY05Namd3TVRFek1ERXdORFUwV2pBdwpNUmN3RlFZRFZRUUtFdzV6ZVhOMFpXMDZiV0Z6ZEdWeWN6RVZNQk1HQTFVRUF4TU1iV0Z6ZEdWeVkyeHBaVzUwCk1JSUNJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBZzhBTUlJQ0NnS0NBZ0VBb3dhZkIxRGZTSDVsNFNwcm5TSGYKbjFYV2l1MXJBbU0yYTNRenQ3MENLS0Q1NkowZTR2cGRJeDd0YkwwcEh2dWN5WGFZNCtyblkvejZjZWViNVN1SQpmTTNjSjRSWGFrc2JTYm9CSXh4MlljVU5NNzRSVStNSkRPYlg4N1gvZHFnVjNlUW45S050Zkhuc2kyUmY3UXN6CjJzVFVwY0VRUk5SVHM4RFZEMXVEaStab3VSSnpnTTVqdG45dFM4SXBkNVZzQW5VNE1WNTVsYlJDaGc3STRleVUKOTk1dkEyRXZCVWhXL2VZN2JJWks4QjA0L0dtY2h1ZjMvMTlGbFBPeFB0Sk1WZjdxL1d4OTcyRGd5elVFMDlaZAowVWJKKzBKMkxwaHZjZE8wNWgvS2ZRekkxa3l3V3RmS2Mvb1I2d3pDV0dVc3FiR0F0dlJPb2NUMkw4RnZWZVlDCmdlNnhwSmNmMFhzb2FVQ3kzTExMdXg3TUtkMkhGOXRmcHRJV0x4VGRTUVh2cVpEZXdGWjRqTVJqQ2ZNOE5rL1gKY3BQb053eHVPREZUeVZJMktRZDBwUWpDQk94aTYyNTJMRThKOSttOFc4R0htMkhGNTdrOG83Qm5YS0NybHlvegpua0xoNzhYV0RUeDl1OW90ZkRxMFFWQmZKbmN6KzdiRFdBK0x6d3VUTlNSS1pZZW5jMW1BbTFTUUZ3TVVCYTY4CkNkQnVxVXU5dHdRY2lZUC9NanZ2ZEdNZnIrdk1nKzU5SDc1VTBjakJJVEI4UVl6WXBaOFZnUy9pR3hHK2NVY2MKYjlGV29oWW80cEppWjV3ZjhyU0NrYlNrTXVqeUJ3cW40a3V1SU5aemlMNVlWa1N0Sy9idE5tSWNmZEJhdUFhOApqVkJFa2h0eENiYWsrVUV4UFpZaFVSVUNBd0VBQWFOV01GUXdEZ1lEVlIwUEFRSC9CQVFEQWdXZ01CTUdBMVVkCkpRUU1NQW9HQ0NzR0FRVUZCd01DTUF3R0ExVWRFd0VCL3dRQ01BQXdId1lEVlIwakJCZ3dGb0FVRVJzWnQ1Z1UKOUplM0drZWpEa2t2c2RqM0tBMHdEUVlKS29aSWh2Y05BUUVMQlFBRGdnSUJBRDRVbU5XckF2ZlFRQ0ROVTk3UQpJQWxEenpNS29udDQ0bWlMODhsM0MwN0dKeGVSZTR3UEQySGc1dFBEQUdEbWl0R3dNdHJWdGZBQjhMUTZsRjkvCjVjN01IYVVBZnRvS1ZiODNQempkSksyZ0hoTENGRlJtUXJsZkp1VG9LckFNcEFqMzhyTDNIOGVxU0NpQUpVcXEKNFc4Y1drdFhtWmE0dm5wWm5JbEVlSDJmZWFpdlZwSTk5TER3QlVSWkZoM0RpQnk2cVViWmZJQjNYbDhBN0xzZgplSERxV2x3QXNzd3p5bTVlakNWSlgzd203U1l6aDYvbkluSWFTV1loeHVRajZPWmF1YkVBa21Bc1FqV2lLbkJzCmVVMlJCOHZzTTB1NjQ5THJ1U0pON1pPNWlRYUNXRG9vQ3o5bS9wTlUzbnJYR3lUT3FTNVE4dXdKNzJJeW9pSmIKb0JXMEhTN0JXRjVHWElBeDNGQmxMelIzS29zQ3FVNmhrd0tua09iaFlMdllSRzR4RVRGTjUzSnlSMXY4RnNlNgpYUTIxY09ZdnA5ZHJWRzl6VjRNVUhaMDJoRkhJcUM4VVR4ZHRkVk1sMExUZzFxWitnc2VXK0hqUVhsN21iK0hTCmlaektFOXpNeWVIYmhkWjMvM29KWmxMbm1qNlVvUkszczg0TGR1YSt6TnFrcmE1bi9CaDFYQncyRDFmNUlRWmwKcWE5MjBPakVycC9qTVJVN3NsQ3c0SEVUdFNnSnUrdVk5Y0poaTgyWHkzR3dqYTZ2b1ZHbWYxNEc1ano1WDkvMwpSSXVRZk5ZQ1dsZEVzbmtCUzM3U1pqR01lRVFIRDIyQXpMMW1ZUHF0cW5ZNkJSVjY4MUNLR08wRDk4OWZXSVZpCmtrMXFKb1lYTzhNUHptRUFLQmRwc1hEeAotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==\n    client-key-data: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlKSndJQkFBS0NBZ0VBb3dhZkIxRGZTSDVsNFNwcm5TSGZuMVhXaXUxckFtTTJhM1F6dDcwQ0tLRDU2SjBlCjR2cGRJeDd0YkwwcEh2dWN5WGFZNCtyblkvejZjZWViNVN1SWZNM2NKNFJYYWtzYlNib0JJeHgyWWNVTk03NFIKVStNSkRPYlg4N1gvZHFnVjNlUW45S050Zkhuc2kyUmY3UXN6MnNUVXBjRVFSTlJUczhEVkQxdURpK1pvdVJKegpnTTVqdG45dFM4SXBkNVZzQW5VNE1WNTVsYlJDaGc3STRleVU5OTV2QTJFdkJVaFcvZVk3YklaSzhCMDQvR21jCmh1ZjMvMTlGbFBPeFB0Sk1WZjdxL1d4OTcyRGd5elVFMDlaZDBVYkorMEoyTHBodmNkTzA1aC9LZlF6STFreXcKV3RmS2Mvb1I2d3pDV0dVc3FiR0F0dlJPb2NUMkw4RnZWZVlDZ2U2eHBKY2YwWHNvYVVDeTNMTEx1eDdNS2QySApGOXRmcHRJV0x4VGRTUVh2cVpEZXdGWjRqTVJqQ2ZNOE5rL1hjcFBvTnd4dU9ERlR5VkkyS1FkMHBRakNCT3hpCjYyNTJMRThKOSttOFc4R0htMkhGNTdrOG83Qm5YS0NybHlvem5rTGg3OFhXRFR4OXU5b3RmRHEwUVZCZkpuY3oKKzdiRFdBK0x6d3VUTlNSS1pZZW5jMW1BbTFTUUZ3TVVCYTY4Q2RCdXFVdTl0d1FjaVlQL01qdnZkR01mcit2TQpnKzU5SDc1VTBjakJJVEI4UVl6WXBaOFZnUy9pR3hHK2NVY2NiOUZXb2hZbzRwSmlaNXdmOHJTQ2tiU2tNdWp5CkJ3cW40a3V1SU5aemlMNVlWa1N0Sy9idE5tSWNmZEJhdUFhOGpWQkVraHR4Q2JhaytVRXhQWlloVVJVQ0F3RUEKQVFLQ0FnQWRkSGZOT1padUliQkVvNFo0Q0lPLzVTRnpUbncwSFRyYTVVN20xcmFLSXJPa2pLYmsrYmxVUENWSApyVkc5c0ZaZXJCZnByaXFLalUydXdOc1E1L0dzSXdHdy9oOVJMQ3JOQWxkc1FacytCUDFpcU9lMmtXRzBQQTB1CmttYUt5TW5Tb29ONWx3R1VLTzlOTENDTTBxWlcwNU5jTTJxK0ZPTGVxbXVVYjhOdnhueUxXOE1VdGJXY1pwK1gKdllnQ2ZEUGNxZE15VUZDRmRPRkVHVzNBTEIrcVBUMHZqaUtSd01VKzhKY3gvMzJRcnFiNkxCYkU1U3FRc0dVQgpDWnF2c0Exc3lEY3EvS3d3VVArc2wzSzgxNUZ4MjJscEJWUVhEU0d0bmtPa0JJQndZWnZ6NUQxRTNKSk9yQk1LCnRlNXpUQ3hxcUpDSi9kQXJPRXdHeXR0VDJOQUE0ZzBuREE4bElaTzU3NEc4TndaUUh3bWNzRkcvM0hrVGR3OEkKeHY4OFNBYUJrR3lKaWlYclVwa05WRmlCTHMvek5KV0hrTDhEVmxneTdGUDlMU1N3RHlEbG5SMmMrMEtsYVZpOAp2dThXSVd0eEZRUTZZYmVzQWtzZjlCNmFrWnh2QzBYRkdJTTFHU0FUT0lTVTBnSVJ1UDRpcXhhcXpVekRKSkplCnQxc2tDWkVlM1F3TVlWM3ZJOHQzbnN2QU5SMDc2ZUZFL2FiOHNwYkgrcmpleXcxWGhXZ2tkR1liK3lYTWdQeE4KR0JpZkxiaG8yUitxQ1hEdG1lUisrNWJHRXpBNFVBejFHTHJhREJmWG9wVEVMOEV0Tm9EcFFualVFaXlzSkdNQQpBMVBYV1lTWUdKSE5BbTdpWnVWbkVGcUk2K3Q2alFQSmYrRjdxSkdUSXRCRlRGNHBqUUtDQVFFQXpteXJ6VU5rCnhxeUF6RUVhTXl2MmNSalNQMUpEQzd4bGxCTWxBOUNOVW1la0I1endpeEtQUzRpNmp6WHdXcnU2L29VUFVjRU4KQW1NcHlQck1nU3dPRXhLeW85L216ZXh6bUxQY053OEtBS2ZaQWFUTmlSYW1QZm9JSi9zK3dwTjgyNEdhQysycwpORXY4UzhKUk9Vb0JYSGtwTzI3M1hYU3FNdGpTLy9IdkNFc1MzSGNJbU1Gd1BFWmpwNGo0Z1ZXa0NWN2YvaEZvCjNJY2tqcXJCQTFxUFVONjU3aUVhYTM3d09EWGhySXBPOFRLbG52Rk1KZE0vUjdEdyt0WVY0MU9qMmtXS2I5MU4KYmoyZkNiQ0RpU045SDh4RGl5Y1dYaXk0RHZMQzlCbGZDeUEySHZPOXBkbFU5K0JuNXRLRWp5T2xycENSYTh1VAprZSttRnBIRVZnOFhKd0tDQVFFQXlpMjZlY2J6dWdXU1lhUnJ3OTNLMVNRTld3Q29xSjJHNWZjYjFsK1RBZGZECnFZTDVlL3FkdFBLY3dtWUVFempHRkRGeXMyREl2WjUyVVQwTytMTE5xV2xCMmhnMjFMeDRaTDF5NWMrOGxtYUIKTHBIdGFpYzA1d3FXUnQxaTE2NU1oU0VSUUExUVpqR0dTMVl3Z1g0N2VlRWNSbEFUNy93d3A1Y0FsMjA1L0txMwpJZHl5SjNTaVNtazhJKzNWRGlaYjhDZ3RINnFubFZDM3RVQ0U4S0RGOTBJRjlNc1Rzbm1JdTFwZWVINWE4UmorCjJaZDEvT2NLNlAxb3lQazZTbXIvemJQSE5ZY0t0Zmk2Ykd0RVE3VWJORGpSaGRTb1JOenNRSU1saVRJQUV2OEQKc1RJa3NqMURyb09sNGp1MFNpcGFSVkIvVEgrU2E4UjhtbTZHSkx2Yll3S0NBUUFLa0hFeWJoS0lRR2ZQREQzbApCSWoyUE1qMXlLWDV3Y2lKRFhuRmVqVGhWTUNHU3pmY1JqVGpMcm90ZmhzdzZZNm1XL1R1d0N5RVJNTHNzRGtyCkd6QVZOYzNDcVVETXBSODlYMmNUd2tkR3hWQkx6ejFkbUxVbFV0aDhBMVd3NjQ5bVJIbTN4cEFibFEveWFKMXoKaXlBS3RZQ3dzL3NnNDBtYWxKSW4yeC9ha3MwQ1QyMDNOQjhrVm8zZkV4bDB0UWRTRzNMbk04amtFRjZFbHFTTwpJV0pZUnkzSXpCVG9EM1VIeTJvalJHakoyMGV5bkxMQzlNNjJRbzN5cUdZeVhpTnlsa0NCZlJmclhtZjNQUHRlClYxeWQ5ZncyOE9jcUpxdTh5QnZHRms1UTZYTWJubW5FUlIwZUduUDIwaXRLa0E1NG9wbHVwTnFHaTNjNmpIYzUKMkVmZEFvSUJBQXdhK05OWnlqWVZKMUtaV2FwOG1TeHg0Q3JXdTBKOVRCcHcxVVhjcXh5dElwWC90WmhxeFE2VQppRFpMaldycE4xTDJNdnZ5aTVKdTduNm12VUsrMGZtV3g4NmJMSTFJUzUwY2lzaWZ5NWJseEU1WmhuR1lyMTQyCkVCRm1LQWpwOHNMMTIrYU41WVo0NktXU0g0MWhWWVpTcURLOWtMUUowWS8zUnAzS2VISmNkbUtjcUQ0Y2lhc1MKNmZyc3ZwaitTdnJ5TE9GOGdsUTZaUVdCTzNSODY5MkdJbjBwdTZBd0RyUEpFV2I5aWN4dHhyU1lrUVAzZ1h1NQowSkJYKzltQTFwZ21iNE1ROXQ4MmFWTWNpUlhVdmpBK1JxMVFzbEtOTjhnVkVpWkl6Q0JYREkyTGh3NzFCQnhxCjNYL1NPMVZGZStveWk2eTA1cnQxSkZESzFWVlZ1aWtDZ2dFQWYxOVZPNzRjSXhCdkNSRU1wTTRHV0Q5d0xzZmYKaHUvSzFaWWdGWUY4eDJtMVlWQ091cVdqdG10Q0VNTkF1MzdXWnRkUm84QjdjQlp2ZXRESGtIYmpMWllQNEs0agpvMTRNNWNxT2xDVHRQRnRjd01zMmhKSDFTdDA1TndMMjFXOW5LVElKWVFTMkFvbGl2Y0tpaC85ODRSekNxbldHClBJLzZjQ2I3RHo4WEF3bDY0OTN1YWdsdjluNnBRQVVEeHk2RHhVd3g1c1VMMTNOZ2s5R291T1pUSjRnL1ZVenIKK3FFdXRySXBzZlQ0RXpYdUp4MGlQblptR3JaSmJhZmVFZ3RlQllCZFMzMVduc3oydXZZR3paU1pNSUQxRVRmQgpWaFZpbWdmZXF6YUlwSm9Qd202QUo1MHF6dThHS3BScUJHQVdhSFBFVnJsV2E3Y2g5SEJQak0yYUdnPT0KLS0tLS1FTkQgUlNBIFBSSVZBVEUgS0VZLS0tLS0K\n    token: 7kcf7swaftuiet20tye4ssip7qql05hqo6dcyxq5wvmmu6jxr3iqr6pm4diivfic5x4l1xvw1uc2y2p1acshg0dzmbw923uc8tmjd7y47uhzp47uqi4e1dvl8il664lq\n",
+            "kubelet_identity": [
+              {
+                "client_id": "cc9e8b9d-3588-430b-95f9-e1f3590bb727",
+                "object_id": "2871f4c7-cb73-4e37-93e9-b740ef038508",
+                "user_assigned_identity_id": "/subscriptions/b3e68cc8-a981-4d18-9f1c-8d3002360d63/resourceGroups/MC_eshop-resources_eshop-aks-cluster_swedencentral/providers/Microsoft.ManagedIdentity/userAssignedIdentities/eshop-aks-cluster-agentpool"
+              }
+            ],
+            "kubernetes_version": "1.33",
+            "linux_profile": [],
+            "local_account_disabled": false,
+            "location": "swedencentral",
+            "maintenance_window": [],
+            "maintenance_window_auto_upgrade": [],
+            "maintenance_window_node_os": [],
+            "microsoft_defender": [],
+            "monitor_metrics": [],
+            "name": "eshop-aks-cluster",
+            "network_profile": [
+              {
+                "dns_service_ip": "10.0.0.10",
+                "docker_bridge_cidr": "",
+                "ebpf_data_plane": "",
+                "ip_versions": [
+                  "IPv4"
+                ],
+                "load_balancer_profile": [
+                  {
+                    "effective_outbound_ips": [
+                      "/subscriptions/b3e68cc8-a981-4d18-9f1c-8d3002360d63/resourceGroups/MC_eshop-resources_eshop-aks-cluster_swedencentral/providers/Microsoft.Network/publicIPAddresses/6ed3dfcb-c13e-49c1-8cef-6b16be19aaab"
+                    ],
+                    "idle_timeout_in_minutes": 0,
+                    "managed_outbound_ip_count": 1,
+                    "managed_outbound_ipv6_count": 0,
+                    "outbound_ip_address_ids": [],
+                    "outbound_ip_prefix_ids": [],
+                    "outbound_ports_allocated": 0
+                  }
+                ],
+                "load_balancer_sku": "standard",
+                "nat_gateway_profile": [],
+                "network_data_plane": "azure",
+                "network_mode": "",
+                "network_plugin": "azure",
+                "network_plugin_mode": "overlay",
+                "network_policy": "",
+                "outbound_ip_address_ids": [],
+                "outbound_ip_prefix_ids": [],
+                "outbound_type": "loadBalancer",
+                "pod_cidr": "10.244.0.0/16",
+                "pod_cidrs": [
+                  "10.244.0.0/16"
+                ],
+                "service_cidr": "10.0.0.0/16",
+                "service_cidrs": [
+                  "10.0.0.0/16"
+                ]
+              }
+            ],
+            "node_os_channel_upgrade": null,
+            "node_resource_group": "MC_eshop-resources_eshop-aks-cluster_swedencentral",
+            "node_resource_group_id": "/subscriptions/b3e68cc8-a981-4d18-9f1c-8d3002360d63/resourceGroups/MC_eshop-resources_eshop-aks-cluster_swedencentral",
+            "oidc_issuer_enabled": false,
+            "oidc_issuer_url": "",
+            "oms_agent": [],
+            "open_service_mesh_enabled": null,
+            "portal_fqdn": "eshopaks-zq28g5kd.portal.hcp.swedencentral.azmk8s.io",
+            "private_cluster_enabled": false,
+            "private_cluster_public_fqdn_enabled": false,
+            "private_dns_zone_id": "",
+            "private_fqdn": "",
+            "public_network_access_enabled": true,
+            "resource_group_name": "eshop-resources",
+            "role_based_access_control_enabled": true,
+            "run_command_enabled": true,
+            "service_mesh_profile": [],
+            "service_principal": [],
+            "sku_tier": "Free",
+            "storage_profile": [],
+            "support_plan": "KubernetesOfficial",
+            "tags": null,
+            "timeouts": null,
+            "web_app_routing": [],
+            "windows_profile": [],
+            "workload_autoscaler_profile": [],
+            "workload_identity_enabled": false
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "kube_admin_config"
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "kube_admin_config_raw"
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "kube_config"
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "kube_config_raw"
+              }
+            ]
+          ],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo1NDAwMDAwMDAwMDAwLCJkZWxldGUiOjU0MDAwMDAwMDAwMDAsInJlYWQiOjMwMDAwMDAwMDAwMCwidXBkYXRlIjo1NDAwMDAwMDAwMDAwfSwic2NoZW1hX3ZlcnNpb24iOiIyIn0=",
+          "dependencies": [
+            "azurerm_resource_group.rg"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "azurerm_resource_group",
+      "name": "rg",
+      "provider": "provider[\"registry.terraform.io/hashicorp/azurerm\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "/subscriptions/b3e68cc8-a981-4d18-9f1c-8d3002360d63/resourceGroups/eshop-resources",
+            "location": "swedencentral",
+            "managed_by": "",
+            "name": "eshop-resources",
+            "tags": null,
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo1NDAwMDAwMDAwMDAwLCJkZWxldGUiOjU0MDAwMDAwMDAwMDAsInJlYWQiOjMwMDAwMDAwMDAwMCwidXBkYXRlIjo1NDAwMDAwMDAwMDAwfX0="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "random_id",
+      "name": "acr_name",
+      "provider": "provider[\"registry.terraform.io/hashicorp/random\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "b64_std": "JpWbEQ==",
+            "b64_url": "JpWbEQ",
+            "byte_length": 4,
+            "dec": "647338769",
+            "hex": "26959b11",
+            "id": "JpWbEQ",
+            "keepers": null,
+            "prefix": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}

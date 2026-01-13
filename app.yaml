@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eshop-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eshop-web
+  template:
+    metadata:
+      labels:
+        app: eshop-web
+    spec:
+      containers:
+      - name: eshop-web
+        image: eshopregistry26959b11.azurecr.io/eshop-web:v1
+        ports:
+        - containerPort: 8080
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: "Development"
+        - name: ConnectionStrings__CatalogConnection
+          valueFrom:
+            secretKeyRef:
+              name: eshop-secrets
+              key: catalog-connection
+        - name: ConnectionStrings__IdentityConnection
+          valueFrom:
+            secretKeyRef:
+              name: eshop-secrets
+              key: identity-connection
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: eshop-web-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: eshop-web
+  ports:
+  - port: 80
+    targetPort: 8080
